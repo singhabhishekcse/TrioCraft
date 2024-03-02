@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.tsx
+import React from 'react';
+import { QueryClient, QueryClientProvider } from 'react-query';
+// import { ReactQueryDevtools } from 'react-query/devtools';
+// import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { ChakraProvider } from '@chakra-ui/react';
+// import Counter from './components/Counter.tsx';
+// import UserForm from './components/UserForm.tsx';
+// import RichTextEditor from './components/RichTextEditor.tsx';
+// import HomePage from './components/HomePage.tsx';
+import Pannel from './components/Pannel.tsx';
+import Header from './components/Header.tsx';
+import { BrowserRouter } from 'react-router-dom';
 
-function App() {
+
+const queryClient = new QueryClient();
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <QueryClientProvider client={queryClient}>
+        <ChakraProvider>
+        <BrowserRouter>
+          <Header />
+          <Pannel />
+          </BrowserRouter>
+        </ChakraProvider>
+      </QueryClientProvider>
+    </>
   );
-}
+};
 
 export default App;
