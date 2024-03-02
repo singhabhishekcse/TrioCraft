@@ -1,4 +1,3 @@
-// src/components/UserForm.tsx
 import React, { useState, useEffect } from 'react';
 import { Box, Input, Button } from '@chakra-ui/react';
 
@@ -12,13 +11,11 @@ const UserForm = () => {
   const [unsavedChanges, setUnsavedChanges] = useState(false);
 
   useEffect(() => {
-    // Check for unsaved changes
     const hasChanges = Object.values(formData).some((value) => value !== '');
     setUnsavedChanges(hasChanges);
   }, [formData]);
 
   useEffect(() => {
-    // Set up the beforeunload event listener
     const handleBeforeUnload = (event: BeforeUnloadEvent) => {
       if (unsavedChanges) {
         const message = 'You have unsaved changes. Are you sure you want to leave?';
@@ -28,8 +25,6 @@ const UserForm = () => {
     };
 
     window.addEventListener('beforeunload', handleBeforeUnload);
-
-    // Clean up the event listener when the component unmounts
     return () => {
       window.removeEventListener('beforeunload', handleBeforeUnload);
     };
@@ -41,11 +36,10 @@ const UserForm = () => {
   };
 
   const handleSubmit = () => {
-    // Save data to localStorage
     Object.keys(formData).forEach((key) => {
       localStorage.setItem(key, formData[key]);
     });
-    setUnsavedChanges(false); // Reset unsaved changes after submitting
+    setUnsavedChanges(false); 
     console.log('User Data:', formData);
   };
 

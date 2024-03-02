@@ -1,7 +1,6 @@
-// Header.js
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Flex, Button, Heading, Text } from '@chakra-ui/react';
+import { Flex, Heading, Text } from '@chakra-ui/react';
 
 const Header = () => {
   return (
